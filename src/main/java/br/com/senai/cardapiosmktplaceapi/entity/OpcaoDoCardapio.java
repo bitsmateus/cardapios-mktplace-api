@@ -2,6 +2,7 @@ package br.com.senai.cardapiosmktplaceapi.entity;
 
 import java.math.BigDecimal;
 
+import br.com.senai.cardapiosmktplaceapi.entity.composite.OpcaoDoCardapioId;
 import br.com.senai.cardapiosmktplaceapi.entity.enums.Confirmacao;
 import br.com.senai.cardapiosmktplaceapi.entity.enums.Status;
 import jakarta.persistence.Column;
@@ -19,7 +20,6 @@ import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.EqualsAndHashCode.Include;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -28,9 +28,9 @@ import lombok.EqualsAndHashCode.Include;
 public class OpcaoDoCardapio {
 	
 	@EmbeddedId
-	@Include
 	@NotNull(message = "O id da opção do cardapio é obrigatorio")
-	private OpcaoDoCardapio id;
+	@EqualsAndHashCode.Include
+	private OpcaoDoCardapioId id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("idDoCardapio")
@@ -39,6 +39,7 @@ public class OpcaoDoCardapio {
 	private Cardapio cardapio;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@MapsId("idDaOpcao")
 	@JoinColumn(name = "id_opcao")
 	@NotNull(message = "A opção é obrigatória")
 	private Opcao opcao;
@@ -59,7 +60,7 @@ public class OpcaoDoCardapio {
 	private Confirmacao recomendado;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ide_secao")
+	@JoinColumn(name = "id_secao")
 	@NotNull(message = "A seção é obrigatoria")
 	private Secao secao;
 	

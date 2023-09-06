@@ -30,6 +30,7 @@ public class Restaurante {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@EqualsAndHashCode.Include
 	private Integer id;
 
 	@Size(min = 3,max = 250, message = "O nome do restaurante deve conter entre 3 e 250 caracteres")
