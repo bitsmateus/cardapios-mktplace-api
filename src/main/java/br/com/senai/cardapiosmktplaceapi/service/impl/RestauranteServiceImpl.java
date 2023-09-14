@@ -74,7 +74,7 @@ public class RestauranteServiceImpl implements RestauranteService {
 	@Override
 	public Restaurante excluirPor(Integer id) {
 		Restaurante restauranteEncontrado = buscarPor(id);
-		Long qtdeDeCardapiosVinculados = cardapiosRepository.contarPor(id);
+		Long qtdeDeCardapiosVinculados = cardapiosRepository.ContarPor(id);
 		Preconditions.checkArgument(qtdeDeCardapiosVinculados == 0, "Existem cardapios vinculados a esse restaurante");
 		this.repository.deleteById(id);
 		return restauranteEncontrado;
