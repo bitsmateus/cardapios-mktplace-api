@@ -6,6 +6,7 @@ import java.util.List;
 import br.com.senai.cardapiosmktplaceapi.entity.Restaurante;
 import br.com.senai.cardapiosmktplaceapi.entity.enums.Status;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +22,7 @@ public class NovoCardapio {
 	@NotBlank(message = "A descrição é obrigatoria")
 	private String descricao;
 
-	@NotBlank(message = "O restaurante é obrigatorio")
+	@NotNull(message = "O restaurante é obrigatorio")
 	private Restaurante restaurante;
 
 	private Status status;
